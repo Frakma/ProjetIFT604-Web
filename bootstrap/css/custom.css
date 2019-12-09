@@ -1,0 +1,30 @@
+.container
+{
+  padding-top: 10px;
+}
+
+body
+{
+  overflow-y:scroll;
+  padding-bottom: 30px;
+}
+
+.mt-16
+{
+  margin-top: 16px;
+}
+
+h1 {
+line-height: 100px;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -100px;
+    visibility: hidden;
+}
+
+#map-div {
+  height: 100%;
+}
