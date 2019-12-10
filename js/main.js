@@ -11,8 +11,7 @@ const menu = {
  */
 function init() {
     //let body = document.getElementById("world");
-
-    
+    initMap()
 }
 
 function loadMenuItem(menu_item){
