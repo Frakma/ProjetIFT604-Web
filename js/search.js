@@ -43,6 +43,8 @@ function makeSearch()
 
       updateListEvents(null)
       updateMarkerEvents(null)
+
+      alert("Recherche réussie")
     }
     ,3000);
 }

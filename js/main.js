@@ -11,6 +11,10 @@ const menu = {
  */
 function init() {
     initMap()
+
+    window.alert = function(message, fallback){
+    notify(message)
+  }
 }
 
 function loadMenuItem(menu_item){
