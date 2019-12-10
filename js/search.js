@@ -25,3 +25,24 @@ function updateListEvents(liste)
     listeGroupElement[0].appendChild(eventJSONToDOMElement(null))
   }
 }
+
+function makeSearch()
+{
+    var searchButton = $("#searchButton")
+
+    searchButton.prop("disabled", true);
+    searchButton[0].setAttribute("class", "progress-bar-striped progress-bar-animated btn btn-primary btn-block");
+    searchButton.text("Recherche en cours ..")
+
+    // à enlever, juste pour simuler le chargement
+    setTimeout(function()
+    {
+      searchButton.prop("disabled", false);
+      searchButton[0].setAttribute("class", "btn btn-primary btn-block");
+      searchButton.text("Rechercher")
+
+      updateListEvents(null)
+      updateMarkerEvents(null)
+    }
+    ,3000);
+}

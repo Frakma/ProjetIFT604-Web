@@ -14,7 +14,8 @@ require_once("php/ajax.conf.php");
   <link href='bootstrap/css/custom.css' rel='stylesheet'>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESzzLzwD8BDqHTWUpsG6kP1EzsL5KXPk&callback=initMap" async defer></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESzzLzwD8BDqHTWUpsG6kP1EzsL5KXPk&callback=initMap" async defer></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
   <script src='bootstrap/js/bootstrap.js'></script>
 
   <script src='js/conf/config.js'></script>
@@ -34,7 +35,7 @@ require_once("php/ajax.conf.php");
       <div class="col-md-4 d-flex flex-column p-3 vh-100">
         <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#modalPreferences">Préférences</button>
         <div class="border border-primary p-3 rounded overflow-auto"
-          <form class="mb-3">
+          <form>
             <div class="form-group">
               <label for="dateDebutInput">Date de début</label>
               <input type="date" class="form-control" value="02-16-2012">
@@ -47,23 +48,24 @@ require_once("php/ajax.conf.php");
               <label for="keywordsInput">Mot-clés</label>
               <input type="text" class="form-control" id="keywordsInput">
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Rechercher</button>
-            <button disabled type="button" class="progress-bar-striped progress-bar-animated btn btn-primary btn-block">Recherche en cours</button>
+            <button type="button" class="btn btn-primary btn-block" id="searchButton" onclick="makeSearch()">
+              Rechercher
+            </button>
           </form>
             <!-- <label for="eventListGroup">Événements correspondants à la recherche</label> -->
-            <div class="list-group overflow-auto my-3" id="eventListGroup" role="tablist">
-              <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-              <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-              <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-              <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-              <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-              <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-              <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-              <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-              <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-              <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-              <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-              <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+          <div class="list-group overflow-auto mt-4 mb-3" id="eventListGroup" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+            <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+            <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
           </div>
         </div>
       </div>

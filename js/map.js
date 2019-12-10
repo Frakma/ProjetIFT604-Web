@@ -23,7 +23,17 @@ function updateLocationMap(position)
   map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
 }
 
-function addEventToMap(event)
+function updateMarkerEvents(liste)
+{
+  clearMapMarkers()
+
+  for (var i=0;i<10;i++)
+  {
+    addMarker(null)
+  }
+}
+
+function addMarker(event)
 {
   var myLatLng = map.getCenter()
 

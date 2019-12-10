@@ -11,8 +11,6 @@ const menu = {
  */
 function init() {
     initMap()
-
-    updateListEvents(null)
 }
 
 function loadMenuItem(menu_item){
