@@ -10,8 +10,9 @@ const menu = {
  * Lance la procédure d'initialisation du service worker.
  */
 function init() {
-    //let body = document.getElementById("world");
     initMap()
+
+    updateListEvents(null)
 }
 
 function loadMenuItem(menu_item){

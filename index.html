@@ -20,6 +20,7 @@ require_once("php/ajax.conf.php");
   <script src='js/conf/config.js'></script>
   <script src='js/main.js'></script>
   <script src='js/map.js'></script>
+  <script src='js/search.js'></script>
   <script src='js/sw/swh.js'></script>
   <script src='js/cookies/cookie.js'></script>
 
@@ -31,36 +32,60 @@ require_once("php/ajax.conf.php");
         <div id="div-map"></div>
       </div>
       <div class="col-md-4 d-flex flex-column p-3 vh-100">
-        <label for="eventListGroup">Événements correspondants à la recherche</label>
-        <div class="list-group overflow-auto mb-3" id="eventListGroup" role="tablist">
-          <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-          <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-          <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-          <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-          <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-          <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-          <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-          <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-          <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+        <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#modalPreferences">Préférences</button>
+        <div class="border border-primary p-3 rounded overflow-auto"
+          <form class="mb-3">
+            <div class="form-group">
+              <label for="dateDebutInput">Date de début</label>
+              <input type="date" class="form-control" value="02-16-2012">
+            </div>
+            <div class="form-group">
+              <label for="dateFinInput">Date de fin</label>
+              <input type="date" class="form-control" value="02-16-2012">
+            </div>
+            <div class="form-group">
+              <label for="keywordsInput">Mot-clés</label>
+              <input type="text" class="form-control" id="keywordsInput">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Rechercher</button>
+            <button disabled type="button" class="progress-bar-striped progress-bar-animated btn btn-primary btn-block">Recherche en cours</button>
+          </form>
+            <!-- <label for="eventListGroup">Événements correspondants à la recherche</label> -->
+            <div class="list-group overflow-auto my-3" id="eventListGroup" role="tablist">
+              <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+              <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+              <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+              <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+              <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+              <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+              <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+              <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+              <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+              <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+              <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+              <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+          </div>
         </div>
-        <form class="mt-auto">
-          <div class="form-group">
-            <label for="dateDebutInput">Date de début</label>
-            <input type="date" class="form-control" value="02-16-2012">
-          </div>
-          <div class="form-group">
-            <label for="dateFinInput">Date de fin</label>
-            <input type="date" class="form-control" value="02-16-2012">
-          </div>
-          <div class="form-group">
-            <label for="keywordsInput">Mot-clés</label>
-            <input type="text" class="form-control" id="keywordsInput">
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Rechercher</button>
-        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de préférences -->
+  <div class="modal fade" id="modalPreferences" tabindex="-1" role="dialog" aria-labelledby="modalPreferencesTitre" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalPreferencesTitre">Vos préférences</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Ohlala pleins de trucs
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
