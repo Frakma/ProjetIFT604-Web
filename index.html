@@ -11,13 +11,11 @@ require_once("php/ajax.conf.php");
 
   <!-- Bootstrap -->
   <link href='bootstrap/css/bootstrap.css' rel='stylesheet'>
-  <link href='bootstrap/css/bootstrap-datepicker.css' rel='stylesheet'>
   <link href='bootstrap/css/custom.css' rel='stylesheet'>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESzzLzwD8BDqHTWUpsG6kP1EzsL5KXPk&callback=initMap" async defer></script>
   <script src='bootstrap/js/bootstrap.js'></script>
-  <script src='bootstrap/js/bootstrap-datepicker.js'></script>
 
   <script src='js/conf/config.js'></script>
   <script src='js/main.js'></script>
@@ -28,12 +26,12 @@ require_once("php/ajax.conf.php");
 </head>
 <body>
   <div class="container-fluid">
-    <div class="row main-row ">
+    <div class="row main-row">
       <div class="col-md-8 p-0">
         <div id="div-map"></div>
       </div>
-      <div class="col-md-4 d-flex justify-content-center align-items-center">
-        <form>
+      <div class="col-md-4 d-flex flex-column p-3 vh-100">
+        <form class="p-3 border border-primary rounded">
           <div class="form-group">
             <label for="dateDebutInput">Date de début</label>
             <input type="date" class="form-control" value="02-16-2012">
@@ -48,6 +46,28 @@ require_once("php/ajax.conf.php");
           </div>
           <button type="submit" class="btn btn-primary btn-block">Rechercher</button>
         </form>
+        <label for="eventListGroup">Événements correspondants à la recherche</label>
+        <div class="">
+          <ul class="list-group list-group-flush" id="eventListGroup">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
