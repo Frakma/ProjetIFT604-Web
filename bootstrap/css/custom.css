@@ -19,6 +19,7 @@ html, body {
 
 #notificationDiv
  {
+   z-index: 999;
    max-width: 50%;
    min-width: 25%;
  }

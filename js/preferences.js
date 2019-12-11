@@ -7,7 +7,7 @@ function artistetoDOMElement(artiste)
   element.setAttribute("class","list-group-item d-flex justify-content-between align-items-center")
 
   // récupérer le nom de l'artiste
-  var elementText = document.createTextNode("Artiste")
+  var elementText = document.createTextNode(artiste["name"])
 
   element.appendChild(elementText)
 
@@ -17,7 +17,10 @@ function artistetoDOMElement(artiste)
   check.setAttribute("type","checkbox")
 
   // checker si preférences ou pas
-  check.checked = true
+  if (artiste["isChoosen"] == true)
+    check.checked = true
+  else
+    check.checked = false
 
   span.appendChild(check)
   element.appendChild(span)
@@ -25,16 +28,21 @@ function artistetoDOMElement(artiste)
   return element
 }
 
-function updateListArtistes(liste)
+function updateListArtistes()
 {
   var listeGroupElement = $("#listeArtistesPreferences")
-
   listeGroupElement.empty()
 
-  for(var i=0; i<20; i++)
+  for(var i=0; i<artistes.length; i++)
   {
-    listeGroupElement[0].appendChild(artistetoDOMElement(null))
+    listeGroupElement[0].appendChild(artistetoDOMElement(artistes[i]))
   }
+}
+
+function openPreferences()
+{
+  updateListArtistes()
+  $("#modalPreferences").modal('toggle')
 }
 
 function savePreferences()
@@ -45,5 +53,15 @@ function savePreferences()
     alert("Préférences sauvegardées")
     $("#modalPreferences").modal('toggle')
   }
-  ,2000);
+  ,1000);
+
+  // si la requête est okay
+  var listeElement = $("#listeArtistesPreferences")
+  for(var i=0; i<artistes.length; i++)
+  {
+    if (listeElement.children()[i].children[0].children[0].checked == true)
+      artistes[i]["isChoosen"] = true
+    else
+      artistes[i]["isChoosen"] = false
+  }
 }

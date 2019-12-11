@@ -10,12 +10,14 @@ const menu = {
  * Lance la procédure d'initialisation du service worker.
  */
 function init() {
-    initMap()
+  initMap()
 
-    window.alert = function(message, fallback)
-    {
-      notify(message)
-    }
+  window.alert = function(message, fallback)
+  {
+    notify(message)
+  }
+
+  artistes = JSON.parse("[{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Green Day\",\"isChoosen\": true},{\"name\": \"Maroon 5\",\"isChoosen\": false},{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Billy Talent\",\"isChoosen\": true},{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Paramore\",\"isChoosen\": true}]")
 
   alert("Interface initialisée")
 }
