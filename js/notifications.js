@@ -2,7 +2,7 @@ function notificationTextToDOMAlert(text)
 {
   var element = document.createElement("div")
 
-  element.setAttribute("class","alert text-white shadow bg-success alert-dismissible fade show w-50")
+  element.setAttribute("class","alert text-white shadow bg-success alert-dismissible fade show")
   element.setAttribute("role","alert")
 
   eventElementText = document.createTextNode(text)

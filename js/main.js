@@ -15,6 +15,8 @@ function init() {
     window.alert = function(message, fallback){
     notify(message)
   }
+
+  alert("Hello")
 }
 
 function loadMenuItem(menu_item){
