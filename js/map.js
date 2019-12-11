@@ -27,20 +27,20 @@ function updateMarkerEvents(liste)
 {
   clearMapMarkers()
 
-  for (var i=0;i<10;i++)
+  for (var i=0;i<liste.length;i++)
   {
-    addMarker(null)
+    addMarker(liste[i])
   }
 }
 
 function addMarker(event)
 {
-  var myLatLng = map.getCenter()
+  var myLatLng = {lat: parseInt(event["place_latitude"]), lng: parseInt(event["place_longitude"])}
 
   var marker = new google.maps.Marker({
     position: myLatLng,
     map: map,
-    title: 'Hello World!'
+    title: event["name"]
   });
 
   markers_events.push(marker)
