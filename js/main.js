@@ -12,11 +12,12 @@ const menu = {
 function init() {
     initMap()
 
-    window.alert = function(message, fallback){
-    notify(message)
-  }
+    window.alert = function(message, fallback)
+    {
+      notify(message)
+    }
 
-  alert("Hello")
+  alert("Interface initialisée")
 }
 
 function loadMenuItem(menu_item){

@@ -17,9 +17,10 @@ html, body {
   width: 100%;
 }
 
-.alert
+#notificationDiv
  {
-   min-width: 50%;
+   max-width: 50%;
+   min-width: 25%;
  }
 
 .modal-open .container-fluid, .modal-open  .container {

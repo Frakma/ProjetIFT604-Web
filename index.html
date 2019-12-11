@@ -15,7 +15,7 @@ require_once("php/ajax.conf.php");
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESzzLzwD8BDqHTWUpsG6kP1EzsL5KXPk&callback=initMap" async defer></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
   <script src='bootstrap/js/bootstrap.js'></script>
 
   <script src='js/conf/config.js'></script>
@@ -23,13 +23,14 @@ require_once("php/ajax.conf.php");
   <script src='js/map.js'></script>
   <script src='js/search.js'></script>
   <script src='js/notifications.js'></script>
+  <script src='js/preferences.js'></script>
   <script src='js/sw/swh.js'></script>
   <script src='js/cookies/cookie.js'></script>
 
 </head>
 <body>
 <body>
-  <div id="notificationDiv" class="fixed-top d-flex justify-content-center pt-4"></div>
+  <div id="notificationDiv" class="fixed-top d-flex flex-column mx-auto justify-content-center pt-4"></div>
   <div class="container-fluid">
     <div class="row main-row">
       <div class="col-md-8 p-0">
@@ -85,11 +86,33 @@ require_once("php/ajax.conf.php");
           </button>
         </div>
         <div class="modal-body">
-          Ohlala pleins de trucs
+          <label for="listeArtistesPreferences">
+            Artistes à inclure dans la recherche
+          </label>
+          <ul class="list-group " id="listeArtistesPreferences">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Cras justo odio
+              <span>
+                <input type="checkbox">
+              </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Dapibus ac facilisis in
+              <span>
+                <input type="checkbox">
+              </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Morbi leo risus
+              <span>
+                <input type="checkbox">
+              </span>
+            </li>
+          </ul>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" onclick="savePreferences()">Sauvegarder</button>
         </div>
       </div>
     </div>

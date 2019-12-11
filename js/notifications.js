@@ -2,7 +2,7 @@ function notificationTextToDOMAlert(text)
 {
   var element = document.createElement("div")
 
-  element.setAttribute("class","alert text-white shadow bg-success alert-dismissible fade show")
+  element.setAttribute("class","alert text-white shadow-lg bg-success alert-dismissible fade show")
   element.setAttribute("role","alert")
 
   eventElementText = document.createTextNode(text)
@@ -20,8 +20,9 @@ function notificationTextToDOMAlert(text)
 function notify(text)
 {
   var div = document.getElementById("notificationDiv")
-  div.insertBefore(notificationTextToDOMAlert(text), div.firstChild)
+  var notif = notificationTextToDOMAlert(text)
+  div.insertBefore(notif, div.firstChild)
   setTimeout(function() {
-      $(".alert").alert('close');
-  }, 5000);
+      $(notif).alert('close');
+  }, 4000);
 }
