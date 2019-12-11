@@ -48,12 +48,6 @@ function openPreferences()
 function savePreferences()
 {
   //TODO faire une requête
-  setTimeout(function()
-  {
-    alert("Préférences sauvegardées")
-    $("#modalPreferences").modal('toggle')
-  }
-  ,1000);
 
   // si la requête est okay
   var listeElement = $("#listeArtistesPreferences")
@@ -64,4 +58,7 @@ function savePreferences()
     else
       artistes[i]["isChoosen"] = false
   }
+
+  $("#modalPreferences").modal('toggle')
+  alert("Préférences sauvegardées")
 }
