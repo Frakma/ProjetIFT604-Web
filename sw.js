@@ -56,8 +56,6 @@ self.addEventListener('fetch', event => {
         caches.match(event.request)
             .then(response => {
                 if (response) {
-                    //console.log('Found ', event.request.url, ' in cache');
-                    //console.log(response);
                     return response;
                 }
                 //console.log('Network request for ', event.request.url);
@@ -104,42 +102,38 @@ self.addEventListener('message', function(event){
                 case msg.OFFLINE:
                     resolve({});//TODO
                     break;
-                case msg.MATCH:
+                case msg.EVENTS:
                     switch (event.data.opt) {
                         case 'all':
-                            fetchGET(REQ.match.all).then(result => {
+                            fetchGET(REQ.events.all).then(result => {
                                 resolve(result);
                             });
                             break;
                         case 'one':
-                            if(event.data.hasOwnProperty('matchId')) {
-                                fetchGET(REQ.match.one + '/' + event.data.matchId).then(result => {
+                            if(event.data.hasOwnProperty('eventId')) {
+                                fetchGET(REQ.events.one + '/' + event.data.eventId).then(result => {
                                     resolve(result);
                                 });
                             }
                             break;
-                        case 'addEvent':
-                            fetchGET(REQ.match.addEvent).then(result => {resolve(result);});
-                            break;
                     }
                     break;
-                case msg.PARIS:
+                case msg.PREFS:
                     switch (event.data.opt) {
-                        case 'all':
-                            fetchGET(REQ.paris.all, {
-                                //param: userId
-                            }).then(result => {resolve(result);});
-                            break;
-                        case 'one':
-                            fetchGET(REQ.paris.one, {
-                                //param: matchId
-                            }).then(result => {resolve(result)});
-                            break;
-                        case 'add':
-                            fetchPOST(REQ.paris.add, {
-                                //param: matchId, equipeId, montant
-                            }).then(result => {resolve(result);});
-                            break;
+                      case 'all':
+                        if(event.data.hasOwnProperty('userId')) {
+                            fetchGET(REQ.preferences.all + '/' + event.data.userId).then(result => {
+                                resolve(result);
+                            });
+                        }
+                        break;
+                      case 'change':
+                        if(event.data.hasOwnProperty('userId')) {
+                            fetchPOST(REQ.preferences.change+ '/' + event.data.userId).then(result => {
+                              resolve(result)
+                            });
+                          }
+                        break;
                     }
                 default:
                     if(msgServ.hasOwnProperty(event.data.action)){

@@ -2,8 +2,8 @@ const msg = {
     OFFLINE: "offline",
     ONLINE: "online",
     CONNEXION: "connexion",
-    MATCH: "match",
-    PARIS: "paris",
+    EVENTS: "evenements",
+    PREFS: "preferences",
     OTHER: "other"
 };
 

@@ -1,8 +1,6 @@
 var sw;
 const menu = {
-    HOME: "home",
-    MATCH: "match",
-    PARIS: "paris"
+    HOME: "home"
 };
 
 /**
@@ -26,8 +24,6 @@ function loadMenuItem(menu_item){
     return new Promise((resolve, reject) => {
         switch (menu_item) {
             case menu.HOME: resolve(location.reload(false)); break;
-            case menu.MATCH: resolve(true); break;
-            case menu.PARIS: resolve(true); break;
             default: reject(false);
         }
     });

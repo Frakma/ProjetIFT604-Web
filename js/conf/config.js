@@ -5,26 +5,20 @@ const REQ = {
     connexion: {
         value: new URL(serverURL)
     },
-    match: {
+    events: {
         all: {
-            value: new URL(serverURL.concat('/api/matchs'))
+            value: new URL(serverURL.concat('/events'))
         },
         one: {
-            value: (p) => {return new URL(serverURL.concat(`/api/matchs/${p}`))}
-        },
-        addEvent: {
-            value: new URL(serverURL.concat('/api/matchs/addEvent'))
+            value: (p) => {return new URL(serverURL.concat(`/events/${p}`))}
         }
     },
-    paris: {
+    preferences: {
         all:{
-            value: new URL(serverURL.concat('/api/bet'))
+            value: new URL(serverURL.concat('/preferences'))
         },
-        one: {
-            value: (p) => {return new URL(serverURL.concat(`/api/bet/info/${p}`))}
-        },
-        add:{
-            value: new URL(serverURL.concat('/api/bet'))
+        change:{
+            value: new URL(serverURL.concat('/preferences'))
         }
     }
 };
