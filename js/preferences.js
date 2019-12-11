@@ -12,9 +12,11 @@ function artistetoDOMElement(artiste)
   element.appendChild(elementText)
 
   var span = document.createElement("span")
+  // span.setAttribute("class","custom-control custom-switch")
 
   var check = document.createElement("input")
   check.setAttribute("type","checkbox")
+  // check.setAttribute("class","custom-control-input")
 
   // checker si preférences ou pas
   if (artiste["isChoosen"] == true)

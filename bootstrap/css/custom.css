@@ -1,14 +1,10 @@
-html, body {
+html, body, .main-row, .container-fluid {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 .container-fluid {
-  height: 100%;
-}
-
-.main-row {
   height: 100%;
 }
 
