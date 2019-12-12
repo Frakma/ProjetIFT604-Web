@@ -38,7 +38,7 @@ function addMarker(evenement)
   var myLatLng = {lat: parseFloat(evenement["place_latitude"]), lng: parseFloat(evenement["place_longitude"])}
 
   var infowindow = new google.maps.InfoWindow({
-      content: "<div><h4>"+evenement["name"]+"</h4><h6>"+evenement["start_time"]+" - "+evenement["end_time"]+"</h6><p>"+evenement["description"]+"</p></div>"
+    content: "<div><h4>"+evenement["name"]+"</h4><h6>"+evenement["start_time"]+" - "+evenement["end_time"]+"</h6><p>"+evenement["description"]+"</p></div>"
   });
 
   var marker = new google.maps.Marker({
