@@ -33,14 +33,22 @@ function updateMarkerEvents(liste)
   }
 }
 
-function addMarker(event)
+function addMarker(evenement)
 {
-  var myLatLng = {lat: parseInt(event["place_latitude"]), lng: parseInt(event["place_longitude"])}
+  var myLatLng = {lat: parseFloat(evenement["place_latitude"]), lng: parseFloat(evenement["place_longitude"])}
+
+  var infowindow = new google.maps.InfoWindow({
+      content: "<div><h4>"+evenement["name"]+"</h4><h6>"+evenement["start_time"]+" - "+evenement["end_time"]+"</h6><p>"+evenement["description"]+"</p></div>"
+  });
 
   var marker = new google.maps.Marker({
     position: myLatLng,
     map: map,
-    title: event["name"]
+    title: evenement["name"]
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
   });
 
   markers_events.push(marker)

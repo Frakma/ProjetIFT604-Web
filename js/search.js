@@ -20,7 +20,7 @@ function eventJSONToDOMElement(event)
   listeGroupItemElement.appendChild(text)
 
   var divInfos = document.createElement("div")
-  divInfos.setAttribute("class","collapse border-right border-left")
+  divInfos.setAttribute("class","collapse")
   divInfos.setAttribute("id",idElement)
 
   var divPadding = document.createElement("div")
@@ -71,7 +71,7 @@ function makeSearch()
       searchButton[0].setAttribute("class", "btn btn-primary btn-block");
       searchButton.text("Rechercher")
 
-      var liste = JSON.parse("[{\"name\": \"Festival en tarbarnak\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.2584187\",\"place_longitude\": \"-71.8791103\"},{\"name\": \"Festival en tarbarnak\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.4584187\",\"place_longitude\": \"-71.8691103\"},{\"name\": \"Festival en tarbarnak\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.3584187\",\"place_longitude\": \"-71.8891103\"}]")
+      var liste = JSON.parse("[{\"name\": \"Festival en tarbarnak\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.384021\",\"place_longitude\": \"-71.9238079\"},{\"name\": \"Festival en criss\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.365496\",\"place_longitude\": \"-71.850052\"},{\"name\": \"Festival en ostie\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.515000\",\"place_longitude\": \"-71.816500\"}]")
 
       updateListEvents(liste)
       updateMarkerEvents(liste)
