@@ -20,7 +20,7 @@ function eventJSONToDOMElement(event)
   listeGroupItemElement.appendChild(text)
 
   var divInfos = document.createElement("div")
-  divInfos.setAttribute("class","collapse")
+  divInfos.setAttribute("class","collapse border-right border-left")
   divInfos.setAttribute("id",idElement)
 
   var divPadding = document.createElement("div")
