@@ -20,8 +20,13 @@ function eventJSONToDOMElement(event)
   listeGroupItemElement.appendChild(text)
 
   var divInfos = document.createElement("div")
-  divInfos.setAttribute("class","collapse p-3")
+  divInfos.setAttribute("class","collapse")
   divInfos.setAttribute("id",idElement)
+
+  var divPadding = document.createElement("div")
+  divPadding.setAttribute("class","p-3")
+
+  divInfos.appendChild(divPadding)
 
   var datesElement = document.createElement("h5")
   datesElement.appendChild(document.createTextNode(start+" - "+end))
@@ -30,8 +35,8 @@ function eventJSONToDOMElement(event)
   descriptionElement.appendChild(document.createTextNode(description))
   descriptionElement.setAttribute("class","m-0")
 
-  divInfos.appendChild(datesElement)
-  divInfos.appendChild(descriptionElement)
+  divPadding.appendChild(datesElement)
+  divPadding.appendChild(descriptionElement)
 
   div.appendChild(listeGroupItemElement)
   div.appendChild(divInfos)
