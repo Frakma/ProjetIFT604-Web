@@ -1,7 +1,3 @@
-<?php
-require_once("php/ajax.conf.php");
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -24,8 +20,16 @@ require_once("php/ajax.conf.php");
   <script src='js/search.js'></script>
   <script src='js/notifications.js'></script>
   <script src='js/preferences.js'></script>
+  <script src='js/sw/msg.js'></script>
   <script src='js/sw/swh.js'></script>
   <script src='js/cookies/cookie.js'></script>
+
+  <script>
+  window.alert = function(message, fallback)
+  {
+    notify(message)
+  }
+  </script>
 
 </head>
 <body>

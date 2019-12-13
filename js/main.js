@@ -8,18 +8,15 @@ const menu = {
  * Lance la procédure d'initialisation du service worker.
  */
 function init() {
-  initMap()
+  sw = new swh("sw.js")
+  sw.done.then(_ => {
+    initMap()
 
-  sw = new swh("sw.js");
-
-  window.alert = function(message, fallback)
-  {
-    notify(message)
-  }
+  }).catch(e => {
+      console.error("service worker failed. :"+e);
+  });
 
   artistes = JSON.parse("[{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Green Day\",\"isChoosen\": true},{\"name\": \"Maroon 5\",\"isChoosen\": false},{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Billy Talent\",\"isChoosen\": true},{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Paramore\",\"isChoosen\": true}]")
-
-  alert("Interface initialisée")
 }
 
 function loadMenuItem(menu_item){
@@ -50,19 +47,4 @@ this function will remove all GET parameters (or "#")
  */
 function clearURL() {
     history.replaceState("", document.title, window.location.pathname + window.location.search);
-}
-
-function getLocation() {
-  if (navigator.geolocation) {
-    return navigator.geolocation.getCurrentPosition(updateLocationText);
-  }
-}
-
-function updateLocationText(position)
-{
-  $.get("https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat="+position.coords.latitude+"&lon="+position.coords.longitude, function(data)
-  {
-    var text = data.address.road+", "+data.address.county+", "+data.address.state+", "+data.address.country
-    $("#locationText").text(text)
-  });
 }

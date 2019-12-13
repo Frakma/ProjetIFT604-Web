@@ -8,10 +8,10 @@ function initMap() {
     controlSize: 24
   });
 
-  setLocation()
+  getLocation()
 }
 
-function setLocation() {
+function getLocation() {
   if (navigator.geolocation) {
     return navigator.geolocation.getCurrentPosition(updateLocationMap);
   }
@@ -19,8 +19,8 @@ function setLocation() {
 
 function updateLocationMap(position)
 {
-  console.log(position)
   map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+  alert("La carte affiche maintenant votre position actuelle")
 }
 
 function updateMarkerEvents(liste)
