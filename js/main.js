@@ -10,6 +10,8 @@ const menu = {
 function init() {
   initMap()
 
+  sw = new swh("sw.js");
+
   window.alert = function(message, fallback)
   {
     notify(message)
@@ -63,5 +65,4 @@ function updateLocationText(position)
     var text = data.address.road+", "+data.address.county+", "+data.address.state+", "+data.address.country
     $("#locationText").text(text)
   });
-
 }

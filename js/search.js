@@ -64,6 +64,19 @@ function makeSearch()
     searchButton[0].setAttribute("class", "progress-bar-striped progress-bar-animated btn btn-primary btn-block");
     searchButton.text("Recherche en cours ..")
 
+    sw.done.then(_ => {
+        sw.send({action: msg.EVENTS, opt: 'all', optData:"salut"}).then(list => {
+            json = JSON.parse(list)
+            console.log(json)
+        });
+    }).catch(e => {
+        console.error("service worker failed. :"+e);
+    });
+
+    // requête -> centre latitude,longitude
+    //            distance int
+    //            date YYYYMMDD00-YYYYMMDD00
+    //            keywords fjkofez,fezjiofezj,fezfezjio,fzejkz
     // à enlever, juste pour simuler le chargement
     setTimeout(function()
     {

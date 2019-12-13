@@ -22,7 +22,7 @@ self.addEventListener('install', event => {
             .then(cache => {
                 return true;//cache.addAll(filesToCache);//TODO
             }).catch(function(error){
-            console.error(error);
+            console.error("ERROR :"+error);
         })
     );
 });
@@ -105,36 +105,32 @@ self.addEventListener('message', function(event){
                 case msg.EVENTS:
                     switch (event.data.opt) {
                         case 'all':
-                            fetchGET(REQ.events.all).then(result => {
+                            fetchPOST(REQ.events.all
+                            {
+                              data : event.data.optData
+                            }).then(result => {
                                 resolve(result);
                             });
-                            break;
-                        case 'one':
-                            if(event.data.hasOwnProperty('eventId')) {
-                                fetchGET(REQ.events.one + '/' + event.data.eventId).then(result => {
-                                    resolve(result);
-                                });
-                            }
                             break;
                     }
                     break;
-                case msg.PREFS:
-                    switch (event.data.opt) {
-                      case 'all':
-                        if(event.data.hasOwnProperty('userId')) {
-                            fetchGET(REQ.preferences.all + '/' + event.data.userId).then(result => {
-                                resolve(result);
-                            });
-                        }
-                        break;
-                      case 'change':
-                        if(event.data.hasOwnProperty('userId')) {
-                            fetchPOST(REQ.preferences.change+ '/' + event.data.userId).then(result => {
-                              resolve(result)
-                            });
-                          }
-                        break;
-                    }
+                // case msg.PREFS:
+                //     switch (event.data.opt) {
+                //       case 'all':
+                //         if(event.data.hasOwnProperty('userId')) {
+                //             fetchGET(REQ.preferences.all + '/' + event.data.userId).then(result => {
+                //                 resolve(result);
+                //             });
+                //         }
+                //         break;
+                //       case 'change':
+                //         if(event.data.hasOwnProperty('userId')) {
+                //             fetchPOST(REQ.preferences.change+ '/' + event.data.userId).then(result => {
+                //               resolve(result)
+                //             });
+                //           }
+                //         break;
+                //     }
                 default:
                     if(msgServ.hasOwnProperty(event.data.action)){
                         resolve(fetchGET(URL, {

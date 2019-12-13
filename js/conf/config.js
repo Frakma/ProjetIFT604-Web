@@ -7,10 +7,7 @@ const REQ = {
     },
     events: {
         all: {
-            value: new URL(serverURL.concat('/events'))
-        },
-        one: {
-            value: (p) => {return new URL(serverURL.concat(`/events/${p}`))}
+            value: new URL(serverURL.concat('/search'))
         }
     },
     preferences: {
