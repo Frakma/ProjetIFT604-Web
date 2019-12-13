@@ -20,7 +20,7 @@ function getLocation() {
 function updateLocationMap(position)
 {
   map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-  alert("La carte affiche maintenant votre position actuelle")
+  alert("La carte est maintenant centrée sur votre position actuelle")
 }
 
 function updateMarkerEvents(liste)

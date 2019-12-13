@@ -104,9 +104,9 @@ self.addEventListener('message', function(event){
                 case msg.OFFLINE:
                     resolve({});//TODO
                     break;
-                case msg.MATCH:
+                case msg.EVENTS:
                     if (event.data.opt == 'all') {
-                      fetchPOST(REQ.events.all).then(result => {
+                      fetchPOST(REQ.events.all, event.data.optData).then(result => {
                           resolve(result);
                       });
                     }
@@ -173,6 +173,7 @@ fetchPOST = async (url_, params) => {
     let req = new Request(url_.value, {method:'POST'});
     req.method = 'POST';
     req.body = params;
+
     return fetch(req).then(response => {
         //console.log('fetchResp: ', response);
         return response.text();

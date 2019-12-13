@@ -64,11 +64,43 @@ function makeSearch()
     searchButton[0].setAttribute("class", "progress-bar-striped progress-bar-animated btn btn-primary btn-block");
     searchButton.text("Recherche en cours ..")
 
+    var dateDebutInput = $("#dateDebutInput")[0].value
+    var dateFinInput = $("#dateFinInput")[0].value
+
+    var dateDebutText
+    var dateFinText
+    var dateD
+    var dateF
+
+    if (dateDebutInput != "")
+      dateD = new Date(dateDebutInput)
+    else
+      dateD = new Date()
+
+    if (dateFinInput != "")
+      dateF = new Date(dateFinInput)
+    else
+      dateF = new Date()
+
+    dateDebutText = dateD.getFullYear()+ ("0"+ (dateD.getUTCMonth()+1)).slice(-2) +  ("0"+ (dateD.getUTCDate())).slice(-2) + "00"
+    dateFinText = dateF.getFullYear()+ ("0"+ (dateF.getUTCMonth()+1)).slice(-2) +  ("0"+ (dateF.getUTCDate())).slice(-2) + "00"
+
+    var lat = map.getCenter().lat()
+    var zoom = map.getZoom()
+    metersPerPx = 156543.03392 * Math.cos(lat * Math.PI / 180) / Math.pow(2, zoom)
+
+    var searchParams = {
+      center: map.getCenter().lat()+","+map.getCenter().lng(),
+      date:dateDebutText+"-"+dateFinText,
+      distance:metersPerPx*$("#div-map")[0].clientWidth
+
+    }
+
     sw.done.then(_ => {
-        sw.send({action: msg.EVENTS, opt: 'all', optData:"salut"}).then(list => {
-            json = JSON.parse(list)
-            console.log(json)
-        });
+      sw.send({action: msg.EVENTS, opt: 'all', optData:searchParams}).then(list => {
+          json = JSON.parse(list)
+          console.log(json)
+      });
     }).catch(e => {
         console.error("service worker failed. :"+e);
     });
