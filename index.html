@@ -5,6 +5,7 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Projet</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap -->
   <link href='bootstrap/css/bootstrap.css' rel='stylesheet'>
@@ -39,11 +40,11 @@
 <body>
   <div id="notificationDiv" class="fixed-top d-flex flex-column mx-auto justify-content-center pt-4"></div>
   <div class="container-fluid">
-    <div class="d-flex flex-sm-row flex-column main-row">
-      <div class="col-md-8 p-0 d-flex flex-column">
+    <div class="row main-row">
+      <div class="col-sm p-0">
         <div id="div-map"></div>
       </div>
-      <div class="col-md-4 d-flex flex-column p-3 vh-100">
+      <div class="col-sm p-3 vh-100">
         <button type="button" class="btn btn-primary mb-4" onclick="openPreferences()">Préférences</button>
         <div class="border border-primary p-3 rounded overflow-auto"
           <form>
