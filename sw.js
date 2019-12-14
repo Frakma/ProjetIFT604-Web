@@ -170,11 +170,11 @@ fetchGET = async (url_, params = {}) => {
 
 
 fetchPOST = async (url_, params) => {
-    let req = new Request(url_.value, {method:'POST'});
-    req.method = 'POST';
-    req.body = params;
-
-    return fetch(req).then(response => {
+    return fetch(url_.value, {
+      method: 'POST',
+      body: JSON.stringify(params)
+    }
+    ).then(response => {
         //console.log('fetchResp: ', response);
         return response.text();
     });

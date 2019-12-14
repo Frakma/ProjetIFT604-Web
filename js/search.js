@@ -92,8 +92,8 @@ function makeSearch()
     var searchParams = {
       center: map.getCenter().lat()+","+map.getCenter().lng(),
       date:dateDebutText+"-"+dateFinText,
-      distance:metersPerPx*$("#div-map")[0].clientWidth
-
+      distance:metersPerPx*$("#div-map")[0].clientWidth,
+      keywords:$("#keywordsInput").val()
     }
 
     sw.done.then(_ => {
