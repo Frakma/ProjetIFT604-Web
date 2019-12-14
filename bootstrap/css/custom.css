@@ -13,6 +13,10 @@ html, body, .main-row, .container-fluid {
   width: 100%;
 }
 
+#div-col-map {
+  min-height: 50%;
+}
+
 #notificationDiv
 {
  z-index: 999;
