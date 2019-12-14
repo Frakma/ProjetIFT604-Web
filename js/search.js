@@ -50,9 +50,21 @@ function updateListEvents(liste)
   var listeGroupElement = $("#eventListGroup")
   listeGroupElement.empty()
 
-  for(var i=0; i<liste.length; i++)
+  if (liste == null)
   {
-    listeGroupElement[0].appendChild(eventJSONToDOMElement(liste[i]))
+    var text = document.createTextNode("Aucun évènement trouvé.")
+    listeGroupElement[0].appendChild(text)
+  }
+  else if (liste.length == null)
+  {
+    var text = document.createTextNode("Aucun évènement trouvé.")
+    listeGroupElement[0].appendChild(text)
+  }
+  else {
+    for(var i=0; i<liste.length; i++)
+    {
+      listeGroupElement[0].appendChild(eventJSONToDOMElement(liste[i]))
+    }
   }
 }
 

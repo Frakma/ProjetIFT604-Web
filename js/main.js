@@ -16,7 +16,9 @@ function init() {
       console.error("service worker failed. :"+e);
   });
 
-  artistes = JSON.parse("[{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Green Day\",\"isChoosen\": true},{\"name\": \"Maroon 5\",\"isChoosen\": false},{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Billy Talent\",\"isChoosen\": true},{\"name\": \"Paramore\",\"isChoosen\": true},{\"name\": \"Paramore\",\"isChoosen\": true}]")
+  artistes = JSON.parse("[{\"name\": \"Quelque chose\",\"isChoosen\": true},{\"name\": \"Autre chose\",\"isChoosen\": true},{\"name\": \"Encore autre chose\",\"isChoosen\": false}]")
+
+  updateListEvents(null)
 }
 
 function loadMenuItem(menu_item){

@@ -5,6 +5,8 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Projet</title>
 
+  <link rel='shortcut icon' type='image/x-icon' href='img/icon.ico' />
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap -->
@@ -12,8 +14,6 @@
   <link href='bootstrap/css/custom.css' rel='stylesheet'>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESzzLzwD8BDqHTWUpsG6kP1EzsL5KXPk&callback=initMap" async defer></script> -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
   <script src='bootstrap/js/bootstrap.js'></script>
 
   <script src='js/conf/config.js'></script>
@@ -34,6 +34,9 @@
   }
   </script>
 
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESzzLzwD8BDqHTWUpsG6kP1EzsL5KXPk&callback=initMap" async defer> </script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
+
   <link rel="manifest" href="./manifest.json">
 </head>
 <body>
@@ -44,7 +47,7 @@
       <div class="col-sm p-0" id="div-col-map">
         <div id="div-map"></div>
       </div>
-      <div class="col-sm p-3 vh-100">
+      <div class="col-sm-4 p-3">
         <button type="button" class="btn btn-primary btn-block mb-4" onclick="openPreferences()">Préférences</button>
         <div class="border border-primary p-3 rounded overflow-auto"
           <form>
@@ -64,7 +67,7 @@
               Rechercher
             </button>
           </form>
-          <label class="mt-3" for="eventListGroup">Événements correspondants à la recherche :</label>
+          <!-- <label class="mt-3" for="eventListGroup">Événements correspondants à la recherche :</label> -->
           <div class="list-group mb-3" id="eventListGroup"></div>
         </div>
       </div>

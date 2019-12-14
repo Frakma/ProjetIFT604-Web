@@ -123,6 +123,7 @@ self.addEventListener('message', function(event){
             }
         }
     }).then(res => {
+        console.log(res)
         if(res)
             respondToMsg(event, res);
         else

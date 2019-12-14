@@ -3,7 +3,7 @@ var markers_events = Array();
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('div-map'), {
-    center: {lat: -34.397, lng: 150.644},
+    center: {lat: 45.384021, lng: -71.923807},
     zoom: 10,
     controlSize: 24
   });
@@ -20,7 +20,7 @@ function getLocation() {
 function updateLocationMap(position)
 {
   map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-  alert("La carte est maintenant centrée sur votre position actuelle")
+  // alert("La carte est maintenant centrée sur votre position actuelle")
 }
 
 function updateMarkerEvents(liste)
