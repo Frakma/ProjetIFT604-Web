@@ -100,28 +100,42 @@ function makeSearch()
       sw.send({action: msg.EVENTS, opt: 'all', optData:searchParams}).then(list => {
           json = JSON.parse(list)
           console.log(json)
+
+          searchButton.prop("disabled", false);
+          searchButton[0].setAttribute("class", "btn btn-primary btn-block");
+          searchButton.text("Rechercher")
+
+          updateListEvents(json)
+          updateMarkerEvents(json)
+      })
+      .catch(e => {
+        alert(e)
       });
     }).catch(e => {
-        console.error("service worker failed. :"+e);
+        searchButton.prop("disabled", false);
+        searchButton[0].setAttribute("class", "btn btn-primary btn-block");
+        searchButton.text("Rechercher")
+
+        console.error("service worker failed. : "+e);
     });
 
-    // requête -> centre latitude,longitude
-    //            distance int
-    //            date YYYYMMDD00-YYYYMMDD00
-    //            keywords fjkofez,fezjiofezj,fezfezjio,fzejkz
-    // à enlever, juste pour simuler le chargement
-    setTimeout(function()
-    {
-      searchButton.prop("disabled", false);
-      searchButton[0].setAttribute("class", "btn btn-primary btn-block");
-      searchButton.text("Rechercher")
-
-      var liste = JSON.parse("[{\"name\": \"Festival en tarbarnak\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.384021\",\"place_longitude\": \"-71.9238079\"},{\"name\": \"Festival en criss\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.365496\",\"place_longitude\": \"-71.850052\"},{\"name\": \"Festival en ostie\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.515000\",\"place_longitude\": \"-71.816500\"}]")
-
-      updateListEvents(liste)
-      updateMarkerEvents(liste)
-
-      alert("Recherche réussie")
-    }
-    ,1000);
+    // // requête -> centre latitude,longitude
+    // //            distance int
+    // //            date YYYYMMDD00-YYYYMMDD00
+    // //            keywords fjkofez,fezjiofezj,fezfezjio,fzejkz
+    // // à enlever, juste pour simuler le chargement
+    // setTimeout(function()
+    // {
+    //   searchButton.prop("disabled", false);
+    //   searchButton[0].setAttribute("class", "btn btn-primary btn-block");
+    //   searchButton.text("Rechercher")
+    //
+    //   var liste = JSON.parse("[{\"name\": \"Festival en tarbarnak\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.384021\",\"place_longitude\": \"-71.9238079\"},{\"name\": \"Festival en criss\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.365496\",\"place_longitude\": \"-71.850052\"},{\"name\": \"Festival en ostie\",\"description\": \"Des trucs de malades++\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.515000\",\"place_longitude\": \"-71.816500\"}]")
+    //
+    //   updateListEvents(liste)
+    //   updateMarkerEvents(liste)
+    //
+    //   alert("Recherche réussie")
+    // }
+    // ,1000);
 }
