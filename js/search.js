@@ -2,10 +2,10 @@ var ids = 0
 
 function eventJSONToDOMElement(event)
 {
-  var name = event["name"]
-  var start = event["start_time"]
-  var end = event["end_time"]
-  var description = event["description"]
+  var name = event["title"]
+  var start = event["startTime"]
+  var end = event["endTime"]
+  var description = event["url"]
 
   var idElement = "event"+ ids++
 
@@ -108,6 +108,17 @@ function makeSearch()
       keywords:$("#keywordsInput").val()
     }
 
+    // var liste = JSON.parse("[{\"name\": \"Festival de Sherbrooke\",\"description\": \"Une description détaillée \",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.384021\",\"place_longitude\": \"-71.9238079\"},{\"name\": \"Festival de quelque chose\",\"description\": \"Des choses intéressantes\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.365496\",\"place_longitude\": \"-71.850052\"},{\"name\": \"Un évènement\",\"description\": \"Description intéressante\",\"start_time\": \"debut\",\"end_time\": \"fin\",\"place_latitude\": \"45.515000\",\"place_longitude\": \"-71.816500\"}]")
+    //
+    // updateListEvents(liste)
+    // updateMarkerEvents(liste)
+
+    // searchButton.prop("disabled", false);
+    // searchButton[0].setAttribute("class", "btn btn-primary btn-block");
+    // searchButton.text("Rechercher")
+    //
+    // alert("Recherche réussie")
+
     sw.done.then(_ => {
       sw.send({action: msg.EVENTS, opt: 'all', optData:searchParams}).then(list => {
           json = JSON.parse(list)
@@ -117,8 +128,8 @@ function makeSearch()
           searchButton[0].setAttribute("class", "btn btn-primary btn-block");
           searchButton.text("Rechercher")
 
-          updateListEvents(json)
-          updateMarkerEvents(json)
+          updateListEvents(json.all)
+          updateMarkerEvents(json.all)
       })
       .catch(e => {
         alert(e)
@@ -131,11 +142,11 @@ function makeSearch()
         console.error("service worker failed. : "+e);
     });
 
-    // // requête -> centre latitude,longitude
-    // //            distance int
-    // //            date YYYYMMDD00-YYYYMMDD00
-    // //            keywords fjkofez,fezjiofezj,fezfezjio,fzejkz
-    // // à enlever, juste pour simuler le chargement
+    // requête -> centre latitude,longitude
+    //            distance int
+    //            date YYYYMMDD00-YYYYMMDD00
+    //            keywords fjkofez,fezjiofezj,fezfezjio,fzejkz
+    // à enlever, juste pour simuler le chargement
     // setTimeout(function()
     // {
     //   searchButton.prop("disabled", false);

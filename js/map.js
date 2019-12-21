@@ -35,16 +35,16 @@ function updateMarkerEvents(liste)
 
 function addMarker(evenement)
 {
-  var myLatLng = {lat: parseFloat(evenement["place_latitude"]), lng: parseFloat(evenement["place_longitude"])}
+  var myLatLng = {lat: parseFloat(evenement["latitude"]), lng: parseFloat(evenement["longitude"])}
 
   var infowindow = new google.maps.InfoWindow({
-    content: "<div><h4>"+evenement["name"]+"</h4><h6>"+evenement["start_time"]+" - "+evenement["end_time"]+"</h6><p>"+evenement["description"]+"</p></div>"
+    content: "<div><h4>"+evenement["title"]+"</h4><h6>"+evenement["startTime"]+"</h6><p>"+evenement["url"]+"</p></div>"
   });
 
   var marker = new google.maps.Marker({
     position: myLatLng,
     map: map,
-    title: evenement["name"]
+    title: evenement["title"]
   });
 
   google.maps.event.addListener(marker, 'click', function() {

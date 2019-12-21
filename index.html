@@ -34,8 +34,8 @@
   }
   </script>
 
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESzzLzwD8BDqHTWUpsG6kP1EzsL5KXPk&callback=initMap" async defer> </script> -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESzzLzwD8BDqHTWUpsG6kP1EzsL5KXPk&callback=initMap" async defer> </script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script> -->
 
   <link rel="manifest" href="./manifest.json">
 </head>
@@ -44,12 +44,12 @@
   <div id="notificationDiv" class="fixed-top d-flex flex-column mx-auto justify-content-center pt-4"></div>
   <div class="container-fluid">
     <div class="row main-row">
-      <div class="col-sm p-0" id="div-col-map">
+      <div class="col-sm p-0 " id="div-col-map">
         <div id="div-map"></div>
       </div>
-      <div class="col-sm-4 p-3">
+      <div class="col-sm-4 p-3 overflow-auto">
         <button type="button" class="btn btn-primary btn-block mb-4" onclick="openPreferences()">Préférences</button>
-        <div class="border border-primary p-3 rounded overflow-auto"
+        <div class="border border-primary p-3 rounded overflow-auto">
           <form>
             <div class="form-group">
               <label for="dateDebutInput">Date de début</label>
